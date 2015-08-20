@@ -80,7 +80,7 @@ var dependencies = [
  	return rebundle();
 
  	function rebundle() {
- 		var start = Data.now();
+ 		var start = Date.now();
 
  		return bundler.bundle()
  			.on('error', function(err) {
