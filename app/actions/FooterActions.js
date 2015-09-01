@@ -1,4 +1,4 @@
-import Alt from '../alt';
+import alt from '../alt';
 
 class FooterActions {
 	constructor() {
@@ -11,6 +11,7 @@ class FooterActions {
 	getTopCharacters() {
 		$.ajax({url: '/api/characters/top'})
 			.done((data) => {
+				console.log(data);
 				this.actions.getTopCharactersSuccess(data)
 			})
 			.fail((jqXhr) => {
@@ -19,4 +20,4 @@ class FooterActions {
 	}
 }
 
-export default FooterActions;
+export default alt.createActions(FooterActions);

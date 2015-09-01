@@ -85,7 +85,7 @@ class Navbar extends React.Component {
 						<div className='input-group'>
 							<input type='text' className='form-control' placeholder={this.state.totalCharacters + ' characters'} value={this.state.searchQuery} onChange={NavbarActions.updateSearchQuery} />
 							<span className='input-group-btn'>
-								<button className='btn btn-default' onClick={this.handleSubmit.bind(this)}><span className='glyphicon glyphicon-icon-search'></span></button>
+								<button className='btn btn-default' onClick={this.handleSubmit.bind(this)}><span className='glyphicon glyphicon-search'></span></button>
 							</span>
 						</div>
 					</form>
