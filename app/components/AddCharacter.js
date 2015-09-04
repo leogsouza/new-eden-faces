@@ -6,6 +6,7 @@ class AddCharacter extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = AddCharacterStore.getState();
+		console.log(this.state);
 		this.onChange = this.onChange.bind(this);
 	}
 
@@ -18,6 +19,7 @@ class AddCharacter extends React.Component {
 	}
 
 	onChange(state) {
+		console.log(state);
 		this.setState(state);
 	}
 
@@ -49,11 +51,11 @@ class AddCharacter extends React.Component {
 						<div className='panel panel-default'>
 							<div className='panel-heading'>Add Character</div>
 							<div className='panel-body'>
-								<form onSubmit={this.handlerSubmit.bind(this)}>
+								<form onSubmit={this.handleSubmit.bind(this)}>
 									<div className={'form-group' + this.state.nameValidationState}>
 										<label className='control-label'>Character Name</label>
 										<input type='text' className='form-control' ref='nameTextField' value={this.state.name} 
-											onChange={AddCharacterActions.updateName autoFocus />
+											onChange={AddCharacterActions.updateName} autoFocus />
 										<span className='help-block'>{this.state.helpBlock}</span>
 									</div>
 									<div className={'form-group' + this.state.genderValidationState}>

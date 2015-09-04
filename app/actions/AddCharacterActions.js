@@ -20,7 +20,12 @@ class AddCharacterActions {
 			data:{name: name, gender: gender}
 		})
 			.done((data) => {
-				this.actions.addCharacterSuccess(data.message)
+				this.actions.addCharacterSuccess(data.message);
 			})
+			.fail((jqXhr) => {
+				this.actions.addCharacterFail(jqXhr.responseJSON.message);
+			});
 	}
 }
+
+export default alt.createActions(AddCharacterActions);
