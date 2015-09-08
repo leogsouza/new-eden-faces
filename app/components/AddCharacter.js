@@ -19,13 +19,13 @@ class AddCharacter extends React.Component {
 	}
 
 	onChange(state) {
-		console.log(state);
+		console.log('teste123');
 		this.setState(state);
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-
+		console.log(this.state);
 		var name = this.state.name.trim();
 		var gender = this.state.gender;
 
@@ -52,13 +52,13 @@ class AddCharacter extends React.Component {
 							<div className='panel-heading'>Add Character</div>
 							<div className='panel-body'>
 								<form onSubmit={this.handleSubmit.bind(this)}>
-									<div className={'form-group' + this.state.nameValidationState}>
+									<div className={'form-group ' + this.state.nameValidationState}>
 										<label className='control-label'>Character Name</label>
 										<input type='text' className='form-control' ref='nameTextField' value={this.state.name} 
 											onChange={AddCharacterActions.updateName} autoFocus />
 										<span className='help-block'>{this.state.helpBlock}</span>
 									</div>
-									<div className={'form-group' + this.state.genderValidationState}>
+									<div className={'form-group ' + this.state.genderValidationState}>
 										<div className='radio radio-inline'>
 											<input type='radio' name='gender' id='female' value='Female' checked={this.state.gender === 'Female'}
 												onChange={AddCharacterActions.updateGender} />
