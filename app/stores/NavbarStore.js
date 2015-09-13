@@ -8,7 +8,7 @@ class NavbarStore {
 		this.totalCharacters = 0;
 		this.onlineUsers = 0;
 		this.searchQuery = '';
-		this.ajsxAnimationClass = '';
+		this.ajaxAnimationClass = '';
 	}
 
 	onFindCharacterSuccess(payload) {
@@ -27,7 +27,7 @@ class NavbarStore {
 	}
 
 	onUpdateAjaxAnimation(className) {
-		this.ajaxAnimationClass = className // fadein or fadeout
+		this.ajaxAnimationClass = className; // fadein or fadeout
 	}
 
 	onUpdateSearchQuery(event) {
@@ -39,7 +39,7 @@ class NavbarStore {
 	}
 
 	onGetCharacterCountFail(jqXhr) {
-		toast.error(jqXhr.responseJSON.message);
+		toastr.error(jqXhr.responseJSON.message);
 	}
 }
 

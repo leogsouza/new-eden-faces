@@ -16,8 +16,8 @@ class Footer extends React.Component {
 		FooterActions.getTopCharacters();
 	}
 
-	componentWillMount() {
-		FooterStore.unlisten(this.OnChange);
+	componentWillUnmount() {
+		FooterStore.unlisten(this.onChange);
 	}
 
 	onChange(state) {
@@ -29,7 +29,7 @@ class Footer extends React.Component {
 			return (
 				<li key={character.characterId}>
 					<Link to={'/characters/' + character.characterId}>
-						<img className='thumb-md' src={'http://image.eveonline.com/Character/' + character.characterId + '_128.png'} />
+						<img className='thumb-md' src={'http://image.eveonline.com/Character/' + character.characterId + '_128.jpg'} />
 					</Link>
 				</li>
 			)

@@ -1,4 +1,4 @@
-import alt from '../Alt';
+import alt from '../alt';
 import {assign} from 'underscore';
 
 class NavbarActions {
@@ -9,7 +9,7 @@ class NavbarActions {
 			'updateAjaxAnimation',
 			'updateSearchQuery',
 			'getCharacterCountSuccess',
-			'getCharacterCountfail',
+			'getCharacterCountFail',
 			'findCharacterSuccess',
 			'findCharacterFail'
 		);
@@ -24,7 +24,7 @@ class NavbarActions {
 			assign(payload, data);
 			this.actions.findCharacterSuccess(payload);
 		})
-		.fail((data) => {
+		.fail(() => {
 			this.actions.findCharacterFail(payload);
 		});
 	}

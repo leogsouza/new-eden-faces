@@ -2,7 +2,7 @@ import alt from '../alt';
 import AddCharacterActions from '../actions/AddCharacterActions';
 
 class AddCharacterStore {
-	construct() {
+	constructor() {
 		this.bindActions(AddCharacterActions);
 		this.name = '';
 		this.gender = '';
@@ -28,7 +28,6 @@ class AddCharacterStore {
 	}
 
 	onUpdateGender(event) {
-		console.log('event gender');
 		this.gender = event.target.value;
 		this.genderValidationState = '';
 	}
@@ -39,7 +38,7 @@ class AddCharacterStore {
 	}
 
 	onInvalidGender() {
-		this.nameValidationState = 'has-error';
+		this.genderValidationState = 'has-error';
 	}
 }
 
