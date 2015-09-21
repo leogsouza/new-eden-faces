@@ -199,6 +199,69 @@ app.get('/api/characters/search',function(req,res,next) {
 });
 
 /**
+ * GET /api/characters/shame
+ * Return 100 lowest ranked characters
+ */
+app.get('/api/characters/shame', function(req, res, next) {
+	Character
+    .find()
+    .sort('-losses')
+    .limit(100)
+    .exec(function(err, characters) {
+      if(err) return next(err);
+      res.send(characters);
+    });
+});
+
+/**
+ * POST /api/report
+ * Reports a character. Character is removed after 4 reports.
+ */
+app.post('/api/report', function(req, res, next) {
+
+  var characterId = req.body.characterId;
+
+  Character.findOne({characterId: characterId}, function(err, character) {
+    if(err) return next(err);
+
+    if(!character) {
+      res.status(404).send({message: 'Character not found.'});
+    }
+
+    character.reports++;
+
+    if(character.reports > 4) {
+      character.remove();
+      return res.send({message: character.name + ' has been deleted.'});
+    }
+
+    character.save(function(err) {
+      if(err) return next(err);
+      res.send({message: character.name + ' has been reported'});
+    });
+
+  });
+});
+
+/**
+ * GET /api/stats
+ * Returns characters statistics
+ */
+app.get('/api/stats', function(req, res, next) {
+  async.parallel([
+    function(callback) {
+      Character.count({}, function(err, count) {
+        callback(err, count);
+      });
+    }, function(callback) {
+      Character.count({race: 'Amarr'}, function(err, amarrCount) {
+        callback(err, amarrCount);
+      })
+    }
+  ]);
+})
+
+/**
  * GET /api/characters/:id
  * Returns detailed character information
  */
@@ -216,7 +279,6 @@ app.get('/api/characters/:id', function(req,res,next) {
 
 	});
 });
-
 
 /**
  * POST /api/characters
